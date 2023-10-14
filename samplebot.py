@@ -82,12 +82,13 @@ def main():
         if message["type"] == "close":
             print("The round has ended")
             break
+        elif message["type"] == "book":
+            print(message)
         elif message["type"] == "error":
             print(message)
         elif message["type"] == "reject":
             print(message)
         elif message["type"] == "fill":
-            print(message)
             if message["symbol"] == "BOND" and message["dir"] == "BUY":
                 simple_Bond.buy_bond_strate(exchange, message["size"],B)
                 B += 1
