@@ -17,11 +17,11 @@ class stockpennying:
             def bestvalue(side):
                 if message[side]:
                     return message[side][0][0]
-
-            self.bid_price = bestvalue("buy")
-            self.ask_price = bestvalue("sell")
-            self.bidvol = sum(sublist[1] for sublist in message["buy"])
-            self.askvol = sum(sublist[1] for sublist in message["sell"])
+            if bestvalue('sell') - bestvalue("buy") >= 3:    
+                self.bid_price = bestvalue("buy")
+                self.ask_price = bestvalue("sell")
+                self.bidvol = sum(sublist[1] for sublist in message["buy"])
+                self.askvol = sum(sublist[1] for sublist in message["sell"])
 
             
     def ordering(self,exchange):
