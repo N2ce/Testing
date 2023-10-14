@@ -56,8 +56,8 @@ def main():
     vale_last_print_time = time.time()
     #exchange.send_add_message(order_id=1000000, symbol="BOND", dir="BUY", price=999, size=50)
     #exchange.send_add_message(order_id=5000000, symbol="BOND", dir="SELL", price=1001, size=50)
-    #MS = pennying.stockpennying("MS")
-    #GS = pennying.stockpennying("GS")
+    MS = pennying.stockpennying("MS")
+    GS = pennying.stockpennying("GS")
     WFC = pennying.stockpennying("WFC")
     # Here is the main loop of the program. It will continue to read and
     # process messages in a loop until a "close" message is received. You
@@ -79,12 +79,12 @@ def main():
         # message because it can be a lot of information to read. Instead, let
         # your code handle the messages and just print the information
         # important for you!
-        #MS.pennying(message)
-        #GS.pennying(message)
+        MS.pennying(message)
+        GS.pennying(message)
         WFC.pennying(message)
-        #MS.ordering(exchange)
-        #GS.ordering(message)
-        WFC.ordering(message)
+        MS.ordering(exchange)
+        GS.ordering(exchange)
+        WFC.ordering(exchange)
         if message["type"] == "close":
             print("The round has ended")
             break
