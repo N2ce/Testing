@@ -13,16 +13,16 @@ def estimation(message):
         sell_sum_value = sum(sublist[0] for sublist in message["sell"])
         print(message["symbol"],buy_sum_value,buy_total,sell_sum_value,sell_total)
         if message["symbol"] == "GS":
-            temp[0] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
+            temp[0] = ((buy_sum_value)+(sell_sum_value))/(buy_total+sell_total)
             print(temp[0])
         if message["symbol"] == "MS":
-            temp[1] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
+            temp[1] = ((buy_sum_value)+(sell_sum_value))/(buy_total+sell_total)
             print(temp[1])
         if message["symbol"] == "WFC":
-            temp[2] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
+            temp[2] = ((buy_sum_value)+(sell_sum_value))/(buy_total+sell_total)
             print(temp[2])
         if message["symbol"] == "XLF":
-            temp[3] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))//(buy_total+sell_total)
+            temp[3] = ((buy_sum_value)+(sell_sum_value))//(buy_total+sell_total)
             print(temp[3])
         print("success")
 
