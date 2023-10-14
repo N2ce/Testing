@@ -77,7 +77,7 @@ def main():
         # your code handle the messages and just print the information
         # important for you!
         MS.pennying(message)
-        if MS.bid_price and MS.ask_price and MS.bidvol and MS.askvol:
+        if MS.bid_price > 0 and MS.ask_price > 0 and MS.bidvol > 0 and MS.askvol > 0:
             MS.ordering(exchange)
         if message["type"] == "close":
             print("The round has ended")
@@ -88,13 +88,7 @@ def main():
             print(message)
         elif message["type"] == "reject":
             print(message)
-        elif message["type"] == "fill":
-            if message["symbol"] == "BOND" and message["dir"] == "BUY":
-                simple_Bond.buy_bond_strate(exchange, message["size"],B)
-                B += 1
-            elif message["symbol"] == "BOND" and message["dir"] == "SELL":
-                simple_Bond.sell_bond_strate(exchange, message["size"],S)
-                S += 1
+
             
 
 

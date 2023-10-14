@@ -20,6 +20,7 @@ class stockpennying:
             self.ask_price = bestvalue("sell")
             self.bidvol = sum(sublist[1] for sublist in message["buy"])
             self.askvol = sum(sublist[1] for sublist in message["sell"])
+            print(self.bid_price, self.ask_price, self.bidvol, self.askvol)
             
     def ordering(self,exchange):
         global B,S
