@@ -20,21 +20,22 @@ class stockpennying:
             self.ask_price = bestvalue("sell")
             self.bidvol = sum(sublist[1] for sublist in message["buy"])
             self.askvol = sum(sublist[1] for sublist in message["sell"])
-            print(self.bid_price, self.ask_price, self.bidvol, self.askvol)
+
             
     def ordering(self,exchange):
         global B,S
+        exchange.send_add_message(order_id=S, symbol=self.symbol, dir="SELL", price=self.bid_price+1, size=self.askvol)
+        print("SOrder sent")
+        exchange.send_add_message(order_id=B, symbol=self.symbol, dir="BUY", price=self.ask_price-1, size=self.bidvol)
+        print("BOrder sent")
+        self.Sorderid.append(S)
+        self.Borderid.append(B)
+        S += 1
+        B += 1
         if len(self.Borderid) != 0 and len(self.Sorderid) != 0:
             exchange.send_cancel_message(self.Borderid[0])
             exchange.send_cancel_message(self.Sorderid[0])
             del self.Borderid[0]
             del self.Sorderid[0]
-            exchange.send_add_message(order_id=S, symbol=self.symbol, dir="SELL", price=self.bid_price+1, size=self.askvol)
-            print("SOrder sent")
-            exchange.send_add_message(order_id=B, symbol=self.symbol, dir="BUY", price=self.ask_price-1, size=self.bidvol)
-            print("BOrder sent")
-            self.Sorderid.append(S)
-            self.Borderid.append(B)
-            S += 1
-            B += 1
+
         
