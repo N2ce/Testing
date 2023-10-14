@@ -11,6 +11,7 @@ def estimation(message):
         buy_sum_value = sum(sublist[0] for sublist in message["buy"])
         sell_total = sum(sublist[1] for sublist in message["sell"])
         sell_sum_value = sum(sublist[0] for sublist in message["sell"])
+        print(message["symbol"],buy_sum_value,buy_total,sell_sum_value,sell_total)
         if message["symbol"] == "GS":
             temp[0] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
             print(temp[0])
