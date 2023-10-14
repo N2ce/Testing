@@ -17,6 +17,7 @@ def estimation(message,temp = []):
             temp[2] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
         elif message["symbol"] == "XLF":
             temp[3] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))//(buy_total+sell_total)
+        print("success")
 
 def weighting(temp,exchange,lst):
     global S,B
@@ -25,17 +26,20 @@ def weighting(temp,exchange,lst):
         exchange.send_add_message(order_id=B, symbol="XLF", dir="BUY", price=temp[3], size=50)
         B += 1
         lst.append(B)
+        print('buy order placed')
         
     elif temp[3] > weight:
         exchange.send_add_message(order_id=S, symbol="XLF", dir="SELL", price=weight, size=50)
         S += 1
         lst.append(S)
+        print('sell order placed')
 
 
 def cancelorder(lst,exchange):
     if len(lst) != 0:
         exchange.send_cancel_message(lst[0])
         del lst[0]
+        print('cancelled')
 
 
 def stratesETF(message,exchange,lst,temp=[]):
