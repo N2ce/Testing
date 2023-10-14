@@ -52,14 +52,7 @@ def cancelorder(exchange):
 
 def stratesETF(message,exchange):
     estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    estimation(message)
-    weighting(exchange)
-    time.sleep(3)
-    cancelorder(exchange)
+    if temp[0] != 0 and temp[1] != 0 and temp[2] != 0 and temp[3] != 0:
+        weighting(exchange)
+        time.sleep(3)
+        cancelorder(exchange)
