@@ -1,5 +1,7 @@
 import samplebot
 
+B = 1000001
+S = 5000001
 
 class stockpennying:
     def __init__(self,symbol) -> None:
