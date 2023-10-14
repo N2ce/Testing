@@ -26,13 +26,13 @@ def weighting(temp,exchange,lst):
         exchange.send_add_message(order_id=B, symbol="XLF", dir="BUY", price=temp[3], size=50)
         B += 1
         lst.append(B)
-        print('buy order placed')
+        print('buy order placed, ' temp[3])
         
     elif temp[3] > weight:
         exchange.send_add_message(order_id=S, symbol="XLF", dir="SELL", price=weight, size=50)
         S += 1
         lst.append(S)
-        print('sell order placed')
+        print('sell order placed,' weight)
 
 
 def cancelorder(lst,exchange):
