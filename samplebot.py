@@ -77,13 +77,11 @@ def main():
         # your code handle the messages and just print the information
         # important for you!
         MS.pennying(message)
-        if MS.bid_price and MS.ask_price and MS.bidvol and MS.askvol:
-            MS.ordering(exchange)
+
+        MS.ordering(exchange)
         if message["type"] == "close":
             print("The round has ended")
             break
-        elif message["type"] == "book":
-            print(message)
         elif message["type"] == "error":
             print(message)
         elif message["type"] == "reject":
