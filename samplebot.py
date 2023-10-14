@@ -14,7 +14,6 @@ import simple_Bond
 import pennying
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # Replace "REPLACEME" with your team name!
-import simple_VAL
 
 team_name = "BitbyBit"
 
@@ -95,48 +94,8 @@ def main():
                 simple_Bond.sell_bond_strate(exchange, message["size"],S)
                 S += 1
             
-        elif message["type"] == "out":
-            print(message)
-        elif message["type"] == "book":
-            if message["symbol"] == "VALE":
-                def best_price(side):
-                    if message[side]:
-                        return message[side][0][0]
 
-                vale_bid_price = best_price("buy")
-                simple_VAL.data(vale_ask_price, "buy", "VALE")
-                vale_ask_price = best_price("sell")
-                simple_VAL.data(vale_ask_price, "sell", "VALE")
-                now = time.time()
 
-                if now > vale_last_print_time + 1:
-                    vale_last_print_time = now
-                    print(
-                        {
-                            "vale_bid_price": vale_bid_price,
-                            "vale_ask_price": vale_ask_price,
-                        }
-                    )
-            if message["symbol"] == "VALBZ":
-                def best_price(side):
-                    if message[side]:
-                        return message[side][0][0]
-
-                vale_bid_price = best_price("buy")
-                simple_VAL.data(vale_bid_price, "buy", "VALBZ")
-                vale_ask_price = best_price("sell")
-                simple_VAL.data(vale_ask_price, "sell", "VALBZ")
-
-                now = time.time()
-
-                if now > vale_last_print_time + 1:
-                    vale_last_print_time = now
-                    print(
-                        {
-                            "vale_bid_price": vale_bid_price,
-                            "vale_ask_price": vale_ask_price,
-                        }
-                    )
 
 
 
