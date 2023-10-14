@@ -13,11 +13,11 @@ def estimation(message):
         sell_sum_value = sum(sublist[0] for sublist in message["sell"])
         if message["symbol"] == "GS":
             temp[0] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
-        elif message["symbol"] == "MS":
+        if message["symbol"] == "MS":
             temp[1] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
-        elif message["symbol"] == "WFC":
+        if message["symbol"] == "WFC":
             temp[2] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))/(buy_total+sell_total)
-        elif message["symbol"] == "XLF":
+        if message["symbol"] == "XLF":
             temp[3] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))//(buy_total+sell_total)
         print("success")
 
@@ -46,9 +46,6 @@ def cancelorder(exchange):
 
 
 def stratesETF(message,exchange):
-    estimation(message)
-    estimation(message)
-    estimation(message)
     estimation(message)
     weighting(exchange)
     time.sleep(3)
