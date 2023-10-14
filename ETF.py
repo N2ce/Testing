@@ -3,7 +3,7 @@ import time
 S = 5000000
 B = 1000000
 lst = []
-temp = []
+temp = [0,0,0,0]
 def estimation(message):
     global temp
     if message["type"] == "book":
