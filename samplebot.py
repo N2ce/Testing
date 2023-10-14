@@ -79,11 +79,11 @@ def main():
         # message because it can be a lot of information to read. Instead, let
         # your code handle the messages and just print the information
         # important for you!
-        MS.pennying(message)
-        GS.pennying(message)
+        #MS.pennying(message)
+        #GS.pennying(message)
         WFC.pennying(message)
-        MS.ordering(exchange)
-        GS.ordering(message)
+        #MS.ordering(exchange)
+        #GS.ordering(message)
         WFC.ordering(message)
         if message["type"] == "close":
             print("The round has ended")
