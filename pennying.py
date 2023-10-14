@@ -1,5 +1,5 @@
 import samplebot
-
+import time
 B = 1000001
 S = 5000001
 
@@ -39,5 +39,5 @@ class stockpennying:
             exchange.send_cancel_message(self.Sorderid[0])
             del self.Borderid[0]
             del self.Sorderid[0]
-
+        time.sleep(5)
         
