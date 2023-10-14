@@ -11,7 +11,7 @@ class stockpennying:
         self.Sorderid = []
         self.symbol = symbol
     def pennying(self,message):
-        if message["type"] == "book" and message["Symbol"] == self.symbol:
+        if message["type"] == "book" and message["symbol"] == self.symbol:
             def bestvalue(side):
                 if message[side]:
                     return message[side][0][0]
