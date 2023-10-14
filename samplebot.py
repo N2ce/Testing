@@ -12,6 +12,7 @@ import socket
 import json
 import simple_Bond
 import pennying
+import ETF
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # Replace "REPLACEME" with your team name!
 
@@ -27,9 +28,10 @@ team_name = "BitbyBit"
 # price, and it prints the current prices for VALE every second. The sample
 # code is intended to be a working example, but it needs some improvement
 # before it will start making good trades!
-
+lst = []
 B = 1000001
 S = 5000001
+temp = [0,0,0,0]
 def main():
     args = parse_arguments()
     global B,S
@@ -56,9 +58,7 @@ def main():
     vale_last_print_time = time.time()
     #exchange.send_add_message(order_id=1000000, symbol="BOND", dir="BUY", price=999, size=50)
     #exchange.send_add_message(order_id=5000000, symbol="BOND", dir="SELL", price=1001, size=50)
-    MS = pennying.stockpennying("MS")
-    GS = pennying.stockpennying("GS")
-    WFC = pennying.stockpennying("WFC")
+
     # Here is the main loop of the program. It will continue to read and
     # process messages in a loop until a "close" message is received. You
     # should write to code handle more types of messages (and not just print
@@ -72,9 +72,7 @@ def main():
     # cause a feedback loop where your bot's messages will quickly be
     # rate-limited and ignored. Please, don't do that!
     while True:
-        MS.delorder(exchange)
-        GS.delorder(exchange)
-        WFC.delorder(exchange)
+        
         message = exchange.read_message()
         # Some of the message types below happen infrequently and contain
         # important information to help you understand what your bot is doing,
@@ -82,12 +80,7 @@ def main():
         # message because it can be a lot of information to read. Instead, let
         # your code handle the messages and just print the information
         # important for you!
-        MS.pennying(message)
-        GS.pennying(message)
-        WFC.pennying(message)
-        MS.ordering(exchange)
-        GS.ordering(exchange)
-        WFC.ordering(exchange)
+        ETF.stratesETF(message, exchange, lst, temp)
         if message["type"] == "close":
             print("The round has ended")
             break
