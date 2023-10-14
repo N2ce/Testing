@@ -3,10 +3,10 @@ import samplebot
 
 class stockpennying:
     def __init__(self,symbol) -> None:
-        self.bid_price
-        self.ask_price
-        self.bidvol
-        self.askvol
+        self.bid_price = 0
+        self.ask_price = 0
+        self.bidvol = 0
+        self.askvol = 0
         self.Borderid = []
         self.Sorderid = []
         self.symbol = symbol
