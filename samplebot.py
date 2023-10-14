@@ -88,7 +88,6 @@ def main():
             print(message)
         elif message["type"] == "reject":
             print(message)
-        time.sleep(1)
             
 
 
