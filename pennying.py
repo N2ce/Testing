@@ -34,6 +34,8 @@ class stockpennying:
         self.Borderid.append(B)
         S += 1
         B += 1
+        
+    def delorder(self,exchange):
         if len(self.Borderid) != 0 and len(self.Sorderid) != 0:
             exchange.send_cancel_message(self.Borderid[0])
             exchange.send_cancel_message(self.Sorderid[0])
