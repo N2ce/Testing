@@ -40,5 +40,5 @@ class stockpennying:
             del self.Borderid[0]
             del self.Sorderid[0]
             print('canceled')
-        time.sleep(5)
+        time.sleep(3)
         
