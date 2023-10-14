@@ -72,6 +72,9 @@ def main():
     # cause a feedback loop where your bot's messages will quickly be
     # rate-limited and ignored. Please, don't do that!
     while True:
+        MS.delorder(exchange)
+        GS.delorder(exchange)
+        WFC.delorder(exchange)
         message = exchange.read_message()
         # Some of the message types below happen infrequently and contain
         # important information to help you understand what your bot is doing,
