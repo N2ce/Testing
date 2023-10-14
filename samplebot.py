@@ -28,7 +28,8 @@ team_name = "BitbyBit"
 # code is intended to be a working example, but it needs some improvement
 # before it will start making good trades!
 
-
+B = 1000001
+S = 5000001
 def main():
     args = parse_arguments()
 
@@ -51,10 +52,8 @@ def main():
     # of the VALE market.
     vale_bid_price, vale_ask_price = None, None
     vale_last_print_time = time.time()
-    B = 1000001
-    S = 5000001
-    exchange.send_add_message(order_id=1000000, symbol="BOND", dir="BUY", price=999, size=50)
-    exchange.send_add_message(order_id=5000000, symbol="BOND", dir="SELL", price=1001, size=50)
+    #exchange.send_add_message(order_id=1000000, symbol="BOND", dir="BUY", price=999, size=50)
+    #exchange.send_add_message(order_id=5000000, symbol="BOND", dir="SELL", price=1001, size=50)
     MS = pennying.stockpennying("MS")
     # Here is the main loop of the program. It will continue to read and
     # process messages in a loop until a "close" message is received. You
