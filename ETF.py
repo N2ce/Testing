@@ -3,7 +3,9 @@ import time
 S = 5000000
 B = 1000000
 lst = []
-def estimation(message,temp = []):
+temp = []
+def estimation(message):
+    global temp
     if message["type"] == "book":
         buy_total = sum(sublist[1] for sublist in message["buy"])
         buy_sum_value = sum(sublist[0] for sublist in message["buy"])
@@ -19,8 +21,8 @@ def estimation(message,temp = []):
             temp[3] = ((buy_sum_value*buy_total)+(sell_total*sell_sum_value))//(buy_total+sell_total)
         print("success")
 
-def weighting(temp,exchange,lst):
-    global S,B
+def weighting(exchange):
+    global S,B,lst,temp
     weight = (2*temp[0] + 3*temp[1] + 2*temp[2] + 3*1000)//10
     if weight > temp[3]:
         exchange.send_add_message(order_id=B, symbol="XLF", dir="BUY", price=temp[3], size=50)
@@ -35,18 +37,19 @@ def weighting(temp,exchange,lst):
         print('sell order placed,', weight)
 
 
-def cancelorder(lst,exchange):
+def cancelorder(exchange):
+    global lst
     if len(lst) != 0:
         exchange.send_cancel_message(lst[0])
         del lst[0]
         print('cancelled')
 
 
-def stratesETF(message,exchange,lst,temp=[]):
-    estimation(message,temp)
-    estimation(message,temp)
-    estimation(message,temp)
-    estimation(message,temp)
-    weighting(temp,exchange,lst)
+def stratesETF(message,exchange):
+    estimation(message)
+    estimation(message)
+    estimation(message)
+    estimation(message)
+    weighting(exchange)
     time.sleep(3)
-    cancelorder(lst,exchange)
+    cancelorder(exchange)
